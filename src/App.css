@@ -41,12 +41,12 @@ h1{
 
 .card {
   color: #0d2d6e;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 20%;
+  margin-right: 20%;
   background-color: rgb(250, 246, 246);
   padding: 20px 40px;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 5%;
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
 }
@@ -104,8 +104,8 @@ button:focus {
 }
 
 .user{
-  height: 30%;
-  width: 30%;
+  height: 25%;
+  width: 25%;
   
   
 }
