@@ -1,8 +1,30 @@
 import './App.css';
 import React from 'react';
 import axios from 'axios';
+import { useState } from 'react';
 
 function App() {
+
+    const [result,Predict] = useState("");
+
+     const handlesubmit = (e) => {
+        e.preventDefault();
+        let res = {
+            Glucose : e.target[0].value,
+            BloodPressure: e.target[1].value,
+            SkinThickness: e.target[2].value,
+            Insulin: e.target[3].value,
+            BMI: e.target[4].value,
+            Age: e.target[5].value
+
+        };
+
+        axios
+            .post("http://localhost:5000/", res)
+            .then((response) => {
+                Predict(response.data.Prediction);
+            });
+    };
 
     return (
         <div className="App" style={{ 
@@ -17,7 +39,7 @@ function App() {
         <div className="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
         <img src="logo.jpg" alt="logo" className="logo" style={{height:'100px'}}></img> <h1>Diabetes Predictor App</h1>
         <div className="card">
-        <form className="form-card" method="POST" action="http://localhost:5000/">
+        <form className="form-card" method="POST" onSubmit={handlesubmit}>
         <img src="user.png" alt="user" className="user"></img>
         <div className="form-group col-12 flex-column "> </div>
         <div className="row">
@@ -40,7 +62,7 @@ function App() {
         <div className="form-group col-6"> <label className="form-control-label px-3">Age (years)</label>  </div> <div className="form-group col-sm-6"> <input style={{width:'200px', height:'30px'}} type="number" min="0" defaultValue="0" name="Age"></input> </div>
         </div>  
         <div className="row">
-        <div className="form-group col-6">  <button type="submit" className="btn-block btn-primary">Predict Result</button> </div>
+        <div className="form-group col-6">  <button type="submit" className="btn-block btn-primary">Predict Result</button> </div><div className="form-group col-6"> <label className="form-control-label px-3">{result}</label>  </div>
         </div>
         </form>
         </div>
