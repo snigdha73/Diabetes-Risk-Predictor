@@ -13,9 +13,9 @@ def fun():
         pred= load_model.predict([arr])
         resp={"Prediction":""}
         if(pred[0]==0):
-            resp['Prediction']="No"
+            resp['Prediction']="Non Diabetic"
         else:
-            resp['Prediction']="Yes"
+            resp['Prediction']="Probably Diabetic"
         return jsonify(resp)
     else:
         return "Connected"
